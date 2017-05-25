@@ -1,0 +1,105 @@
+﻿@model MaritimaDominicana.Models.ProblemDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProblemDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Solution.SolutionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Solution.SolutionDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Gestionar", "Edit", new { id = Model.ProblemDetailId }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

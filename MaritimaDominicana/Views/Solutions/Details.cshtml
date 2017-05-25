@@ -1,0 +1,80 @@
+﻿@model MaritimaDominicana.Models.Solution
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Solucion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Problem.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDetail.Problem.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDetail.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Client.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDetail.Client.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDetail.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Place.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDetail.Place.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Nombre")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SolutionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SolutionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

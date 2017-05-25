@@ -1,0 +1,86 @@
+﻿html, body{
+    font-size: 16px;
+}
+
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    height: auto;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media(min-device-height: 600px) and (min-width:768px){
+    .sidebar-nav .navbar{
+        height:506px;
+    }
+}
+
+@media(min-device-height: 700px) and (min-width:768px){
+    .sidebar-nav .navbar{
+        height:650px;
+    }
+}
+
+@media(min-device-height: 850px) and (min-width:768px){
+    .sidebar-nav .navbar{
+        height:720px;
+    }
+}
+
+#main {
+   /*transition: margin-left .5s;*/
+    padding: 20px;
+    margin-left:20%;
+
+}
+
+.table th,td{
+    text-align: center;
+}
+
+#notification{
+    display: none;
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    min-width : 100px;
+    min-height: 50px;
+    overflow-x:auto;
+    font-size: 16px;
+    background-color: #fff;
+   
+    
+}
+
+#notification dl{
+     background-color: #252426;
+      border-radius:5px;
+      font-weight: bold;
+      color: #6570f3;
+      margin-bottom: 6px;
+      padding-right: 6px;
+}
+
+
+
+#notification dd{
+    font-size: medium;
+    font-weight: normal;
+    color : #fcfcfc;
+}

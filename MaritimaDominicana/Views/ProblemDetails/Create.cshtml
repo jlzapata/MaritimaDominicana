@@ -1,0 +1,128 @@
+﻿@model MaritimaDominicana.Models.ProblemDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+    
+    <div class="col-sm-4 col-md-2">
+        <button id="searchUsers" name="searchUsers" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-top:22px;">Buscar Usuarios</button>
+    </div>
+
+    <!---Inicio ventana modal---->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 form-group form-group-sm">
+                            <label class="control-label" for="organization"> Organización</label><br />
+                            <input class="form-control" type="text" name="organization" id="organization" value="" placeholder="Nombre o numero de la organizacion" />
+                        </div>
+
+                        <div class="col-sm-12 col-md-5 form-group form-group-sm">
+                            <label class="control-label" for="userSearch"> Usuario</label><br />
+                            <input class="form-control" type="text" name="userSearch" id="userSearch" value="" placeholder="Nombre, Telefono o email. "/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div id="usersFound" class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!---Fin ventana modal---->
+</div>
+
+@using (Html.BeginForm("Create", "ProblemDetails", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form form-horizontal">
+        <h4>Aqui puede crear una nueva solicitud</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProblemId, "Problema", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProblemId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProblemId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client.Name, null, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ClientId, null, htmlAttributes: new { @class = "form-control col-sm-12 col-md-7" })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, "Departmento", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description,new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Place.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PlaceId",null, htmlAttributes: new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.Place, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("files","Archivos", new { @class="control-label col-md-2"})
+            <div class="col-md-10">
+                <input type="file" name="files" value="" accept="image/*,application/pdf" multiple/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear Solicitud" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<p id="usersShow">
+
+</p>
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

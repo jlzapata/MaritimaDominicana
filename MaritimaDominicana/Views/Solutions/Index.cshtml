@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MaritimaDominicana.Models.Solution>
+
+@{
+    ViewBag.Title = "Soluciones";
+}
+
+<h2>Soluciones</h2>
+
+<p>
+    <div class="form-group">
+        @Html.Label("Buscar", "Buscar Solucion", htmlAttributes: new { @class = "control-label" })
+        @Html.TextBox("searchSolution",null,htmlAttributes: new { @class="form-control", @placeholder ="Presione enter"})
+    </div>
+</p>
+<table class="table" id="solutionTable">
+    <tr>
+        <th>
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Problem.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProblemDetail.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SolutionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.SolutionId)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProblemDetail.Problem.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProblemDetail.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SolutionDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.SolutionId }) 
+        </td>
+    </tr>
+}
+
+</table>

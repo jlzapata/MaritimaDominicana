@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MaritimaDominicana.Models.ProblemDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Solicitudes</h2>
+
+<p>
+    @Html.ActionLink("Nueva Solicitud", "Create", "ProblemDetails", htmlAttributes: new { @class = "btn btn-default"})
+</p>
+<table id="problemDetailsTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Name)
+            </th>
+            <th>
+                @Html.DisplayName("Estado")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Place.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Problem.Name)
+            </th>
+            <th>
+                @Html.DisplayName("Registrado por")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string color = "#fff";
+            if (Session["UserId"] != null && item.AssignedTo == (int)Session["UserId"])
+            {
+                color = "#9ba0fa";
+            }
+            <tr style="background-color:@color">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProblemDetailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    @if (item.state == 3)
+                    {
+                        <span class="glyphicon glyphicon-ok"><strong> Cerrado</strong></span>
+                    }
+                    @if (item.state == 2)
+                    {
+                        <span class="glyphicon glyphicon-user"><strong> Asignado</strong></span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @if ((string)Session["userType"] == "Admin")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProblemDetailId }) ;
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProblemDetailId })
+                    }
+
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ProblemDetailId })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Help Desk</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Styles.Url("~/Content/Principal.css")" rel="stylesheet" /> 
+    <meta name="description" content="Help Desk es una herramienta para ayudar a resolver los problemas cotidianos de tecnologia." />
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs-inline-block navbar-brand">Help Desk</span>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="~/ProblemDetails/Create"><span class="glyphicon glyphicon-list-alt"></span> Nueva Solicitud</a></li>
+                            <li><a href="~/ProblemDetails/Index"><span class="glyphicon glyphicon-list-alt"></span> Solicitudes</a></li>
+                            <li><a href="~/Solutions/Index"><span class="glyphicon glyphicon-search"></span> Soluciones</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Modificar FAQ</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="glyphicon glyphicon-stats"></b> Informes</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Reports/Index">Historico de solicitudes</a></li>
+                                    <li><a href="~/Reports/StaticsReport">Informes de Volumen</a></li>
+                                    <li><a href="#">Listas de solicitudes</a></li>
+                                    <li><a href="~/Reports/ManagementTime">Tiempo de gestion</a></li>
+                                    <li><a href="#">Volumen de solicitudes</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Administracion</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Usuarios","Index","Users")</li>
+                                    <li>@Html.ActionLink("Clientes", "Index", "Clients")</li>
+                                    <li>@Html.ActionLink("Departamentos", "Index", "Departments")</li>
+                                    <li>@Html.ActionLink("Lugares", "Index", "Places")</li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><span class="glyphicon glyphicon-book"></span> Manual</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-time"></span> Time</a></li>
+                            <li>
+                                @if (Session["userId"] != null)
+                                {
+                                    using (Html.BeginForm("Logout", "Users", FormMethod.Post))
+                                    {
+
+                                        <button type="submit" class="btn btn-danger" style="margin-left:60px">Logout</button>
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Login", "Login", "Users", null, htmlAttributes: new { @class = "btn btn-default", @style = "margin:0px 10px" })
+
+                                }
+
+                            </li>
+                        </ul>
+
+                    </div><!--/.nav-collapse -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10 container">
+            @RenderBody()
+        </div>
+    </div>
+        
+        <div id="notification">
+            
+        </div>
+        <footer>
+            @{
+
+            }
+            <p>&copy; @DateTime.Now.Year - @Session["User"]</p>
+        </footer>
+    
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/myScript.js"></script>
+</body>
+
+</html>

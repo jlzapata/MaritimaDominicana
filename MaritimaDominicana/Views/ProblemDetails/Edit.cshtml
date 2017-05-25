@@ -1,0 +1,272 @@
+﻿@model MaritimaDominicana.Models.ProblemDetail
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProblemDetailId)
+        @Html.HiddenFor(model => model.Date)
+        @Html.HiddenFor(model => model.CreatedBy)
+        <div class="row">
+            <span class="left col-sm-4"><strong>@DateTime.Now</strong></span> <span class="text-center col-sm-4"><strong>@Model.User.FullName</strong></span><br />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="title">Titulo de la solicitud:</label>
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-sm-7" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+
+
+                <ul class="nav nav-pills small">
+                    <li class="active"><a data-toggle="pill" href="#state">Estado</a></li>
+                    <li><a data-toggle="pill" href="#op">Otras personas de contacto</a></li>
+                    <li><a data-toggle="pill" href="#time">Registro de tiempo</a></li>
+                    <li><a data-toggle="pill" href="#description">Descripción de la solicitud</a></li>
+                    <li><a data-toggle="pill" href="#solution">Solución</a></li>
+                    <li><a data-toggle="pill" href="#files">Archivos adjuntos</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="state" class="tab-pane fade in active">
+                        <div class="col-sm-12 col-md-6">
+                            <span class="text-center" style="margin:0 auto;">Estado</span>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.state, null, htmlAttributes: new { @class = "control-label col-md-5" })
+                                <div class="col-md-7">
+                                    @Html.DropDownList("StateId", null, htmlAttributes: new { @class = "form-control", @disabled = true })
+                                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-12 col-md-5" for="priority"> Prioridad:</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select name="priority" class="form-control">
+                                        <option>Alta</option>
+                                        <option>Media</option>
+                                        <option>Baja</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Assigned.FullName, "Asignado: ", htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DisplayFor(model => model.Assigned.FullName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.User.FullName, "Registrado por: ", htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DisplayFor(model => model.User.FullName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-12 col-md-5"> Idioma:</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select class="form-control">
+                                        <option>Español</option>
+                                        <option>English</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+
+                            <span class="text-center">Registrado para</span><br />
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ProblemId, "Problema", htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DropDownListFor(model => model.ProblemId, null, htmlAttributes: new { @class = "form-control col-sm-12 col-md-7" })
+                                    @Html.ValidationMessageFor(model => model.ProblemId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Client.Name, null, htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DropDownListFor(model => model.ClientId, null, htmlAttributes: new { @class = "form-control col-sm-12 col-md-7", @readonly = true })
+                                    @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DepartmentId, "Departmento", htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DropDownListFor(model => model.DepartmentId, null, htmlAttributes: new { @class = "form-control col-sm-12 col-md-7" })
+                                    @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Place.Name, htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @Html.DropDownListFor(model => model.PlaceId, null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Place, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-sm-12 col-md-5" })
+                                <div class="col-sm-12 col-md-7">
+                                    @{
+                                        string fecha = Model.Date.ToShortDateString();
+                                    }
+                                    <span>@fecha</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="op" class="tab-pane fade">
+                    </div>
+                    <div id="time" class="tab-pane fade">
+                        @{var tiempo = (DateTime.Now - Model.Date).Duration();}
+                        <p>Tiempo transcurrido desde la creacion: @tiempo</p>
+                    </div>
+                    <div id="description" class="tab-pane fade">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-xs-12" style="text-align:center">Descripción</label>
+                                @Html.TextAreaFor(model => model.Description, 4, 40, new { @class = "form-control", @style = "margin:auto" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="solution" class="tab-pane fade">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-xs-12" style="text-align:center">Descripción</label>
+                                @Html.TextAreaFor(model => model.Solution.SolutionDescription, 4, 40, new { @class = "form-control", @style = "margin:auto", @disabled = true})
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="files" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @if (ViewBag.Images != null)
+                                {
+                                    foreach (var item in ViewBag.Images)
+                                    {
+                                        <img class="img-responsive" src="~/Uploads/Images/@Model.ProblemDetailId/@item" />
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p class="text-info">No imagenes</p>
+                                }
+
+                            </div>
+                            <div class="col-sm-6">
+                                @if (ViewBag.PDFs != null)
+                                {
+                                    foreach (var item in ViewBag.PDFs)
+                                    {
+                                        <a href="~/Uploads/PDFs/@Model.ProblemDetailId/@item"><span class="glyphicon glyphicon-book"> @item</span></a>
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p class="text-info">No PDFs</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!--Mitad del form-->
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <button type="submit" class="btn btn-warning">Guardar</button>
+            <a class="btn btn-primary" id="asignar" data-toggle="modal" data-target="#myModal">Asignar</a>
+            <a class="btn btn-success" id="cerrar" data-toggle="modal" data-target="#closeTicket">Cerrar</a>
+        </div>
+    </div>
+}
+
+<!---Inicio ventana modal---->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="row">
+
+                    <div class="form-group text-center">
+                        <label class="control-label" for="userSearch"> Usuarios</label><br />
+                        <input class="form-control" style="display:inline" type="text" name="userSearch" id="userSearch" value="" placeholder="Nombre, Telefono o email. " />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" id="usersFound">
+                <table>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!---Fin ventana modal---->
+<!---Inicio ventana modal---->
+<!-- Modal -->
+<div class="modal fade" id="closeTicket" role="dialog">
+    <div class="modal-dialog">
+        @Html.BeginForm("Close", "ProblemDetails", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }){
+        @Html.HiddenFor(model => model.ProblemDetailId)
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p>Cerrar Ticket</p>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @Html.LabelFor(model => model.Solution.SolutionDescription, null, new { @class = "col-sm-3 control-label"})
+
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.Solution.SolutionDescription, new { @class = "form-control", @placeholder = "Escriba su solucion aqui"})
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Cerrar</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
