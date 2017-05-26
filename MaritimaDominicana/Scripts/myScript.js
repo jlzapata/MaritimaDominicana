@@ -126,6 +126,9 @@ function notification() {
                     $('#notification').fadeOut(3000);
                 }, 10000);
             }
+        },
+        error: function (error) {
+            console.log(error)
         }
     });
 }
@@ -201,21 +204,21 @@ function loadManegentTime() {
             if (data.length > 0 || data != 0) {
                 var result = '<caption style="text-align:center">Tiempo total de gestion</caption>';
                 if ($('#categorias').val() == 4) {
-                    result += '<tr><td>Numero de soluciones dentro de 1 hora </td><td>' + data.hora1 + '</td><td>' + data.hora1 / data.total * 100 + '%</td></tr>';
-                    result += '<tr><td>Numero de soluciones dentro de 4 horas </td><td>' + data.hora4 + '</td><td>' + data.hora4 / data.total * 100 + '%</td></tr>';
-                    result += '<tr><td>Numero de soluciones dentro de 8 horas </td><td>' + data.hora8 + '</td><td>' + data.hora8 / data.total * 100 + '%</td></tr>';
-                    result += '<tr><td>Numero de soluciones dentro de 24 horas </td><td>' + data.hora24 + '</td><td>' + data.hora24 / data.total * 100 + '%</td></tr>';
-                    result += '<tr><td>Numero de soluciones mayor de 24 horas </td><td>' + data.mhora24 + '</td><td>' + data.mhora24 / data.total * 100 + '%</td></tr>';
+                    result += '<tr><td>Numero de soluciones dentro de 1 hora </td><td>' + data.hora1 + '</td><td>' + (data.hora1 / data.total * 100).toFixed(2) + '%</td></tr>';
+                    result += '<tr><td>Numero de soluciones dentro de 4 horas </td><td>' + data.hora4 + '</td><td>' + (data.hora4 / data.total * 100).toFixed(2) + '%</td></tr>';
+                    result += '<tr><td>Numero de soluciones dentro de 8 horas </td><td>' + data.hora8 + '</td><td>' + (data.hora8 / data.total * 100).toFixed(2) + '%</td></tr>';
+                    result += '<tr><td>Numero de soluciones dentro de 24 horas </td><td>' + data.hora24 + '</td><td>' + (data.hora24 / data.total * 100).toFixed(2) + '%</td></tr>';
+                    result += '<tr><td>Numero de soluciones mayor de 24 horas </td><td>' + data.mhora24 + '</td><td>' + (data.mhora24 / data.total * 100).toFixed(2) + '%</td></tr>';
                     result += '<tr><td>Total</td><td colspan="2">' + data.total + '</td></tr>';
                 } else {
 
                     for (var i = 0; i < data.length; i++) {
                         result += '<tr><th colspan="3">' + data[i].category + '</th></tr>';
-                        result += '<tr><td>Numero de soluciones dentro de 1 hora </td><td>' + data[i].hora1 + '</td><td>' + data[i].hora1 / data[i].total * 100 + '%</td></tr>';
-                        result += '<tr><td>Numero de soluciones dentro de 4 horas </td><td>' + data[i].hora4 + '</td><td>' + data[i].hora4 / data[i].total * 100 + '%</td></tr>';
-                        result += '<tr><td>Numero de soluciones dentro de 8 horas </td><td>' + data[i].hora8 + '</td><td>' + data[i].hora8 / data[i].total * 100 + '%</td></tr>';
-                        result += '<tr><td>Numero de soluciones dentro de 24 horas </td><td>' + data[i].hora24 + '</td><td>' + data[i].hora24 / data[i].total * 100 + '%</td></tr>';
-                        result += '<tr><td>Numero de soluciones mayor de 24 horas </td><td>' + data[i].mhora24 + '</td><td>' + data[i].mhora24 / data[i].total * 100 + '%</td></tr>';
+                        result += '<tr><td>Numero de soluciones dentro de 1 hora </td><td>' + data[i].hora1 + '</td><td>' + (data[i].hora1 / data[i].total * 100).toFixed(2) + '%</td></tr>';
+                        result += '<tr><td>Numero de soluciones dentro de 4 horas </td><td>' + data[i].hora4 + '</td><td>' + (data[i].hora4 / data[i].total * 100).toFixed(2) + '%</td></tr>';
+                        result += '<tr><td>Numero de soluciones dentro de 8 horas </td><td>' + data[i].hora8 + '</td><td>' + (data[i].hora8 / data[i].total * 100).toFixed(2) + '%</td></tr>';
+                        result += '<tr><td>Numero de soluciones dentro de 24 horas </td><td>' + data[i].hora24 + '</td><td>' + (data[i].hora24 / data[i].total * 100).toFixed(2) + '%</td></tr>';
+                        result += '<tr><td>Numero de soluciones mayor de 24 horas </td><td>' + data[i].mhora24 + '</td><td>' + (data[i].mhora24 / data[i].total * 100).toFixed(2) + '%</td></tr>';
                         result += '<tr><td>Total</td><td colspan="2">' + data[i].total + '</td></tr>';
                     }
                 }

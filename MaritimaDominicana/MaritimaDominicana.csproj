@@ -159,10 +159,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginFilterAttribute.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\ProblemDetailsController.cs" />
+    <Compile Include="Controllers\ProblemsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SolutionsController.cs" />
     <Compile Include="Controllers\TypeFilterAttribute.cs" />
@@ -238,9 +238,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ProblemDetails\Create.cshtml" />
     <Content Include="Views\ProblemDetails\Delete.cshtml" />
     <Content Include="Views\ProblemDetails\Details.cshtml" />
@@ -274,6 +271,11 @@
     <Content Include="Views\Places\Details.cshtml" />
     <Content Include="Views\Places\Edit.cshtml" />
     <Content Include="Views\Places\Index.cshtml" />
+    <Content Include="Views\Problems\Create.cshtml" />
+    <Content Include="Views\Problems\Delete.cshtml" />
+    <Content Include="Views\Problems\Details.cshtml" />
+    <Content Include="Views\Problems\Edit.cshtml" />
+    <Content Include="Views\Problems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

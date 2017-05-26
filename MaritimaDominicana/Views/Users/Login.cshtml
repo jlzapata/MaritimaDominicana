@@ -32,6 +32,12 @@
         </div>
     </div>
     }
+    @if(ViewBag.error != null)
+    {
+    <div class="has-error">
+        @ViewBag.error
+    </div>
+    }
 </div>
 
 
