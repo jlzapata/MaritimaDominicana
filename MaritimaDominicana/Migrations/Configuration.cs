@@ -221,6 +221,36 @@ namespace MaritimaDominicana.Migrations
 
 
                 );
+
+            context.Solutions.AddOrUpdate(
+                s => s.SolutionId,
+                new Solution
+                {
+                    SolutionId = 1,
+                    SolutionDescription = "Cpu averiado. Se reemplazo.",
+                    UserId = 1,
+                    Date = new DateTime(2017, 05, 26, 02, 37, 10)
+                },
+                new Solution
+                {
+                    SolutionId = 3,
+                    SolutionDescription = "Configuracion de tarjeta de red inadecuada. Solucionado.",
+                    UserId = 1,
+                    Date = new DateTime(2017, 05, 26, 02, 34, 10)
+                },
+
+                 new Solution
+                 {
+                     SolutionId = 6,
+                     SolutionDescription = "Bocinas dañadas. Fueron reemplazadas.",
+                     UserId = 1,
+                     Date = new DateTime(2017, 05, 26, 02, 33, 10)
+                 }
+
+
+                );
         }
+
+
     }
 }
