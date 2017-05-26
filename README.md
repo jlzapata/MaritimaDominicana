@@ -1,6 +1,9 @@
 # MaritimaDominicana
 Proyecto Help Desk
 
+Esta aplicacion esta desarrollada con el patron MVC de .NET por lo que antes de comenzar es necesario verificar el 
+string conection en el Web.config y luego correr el comando "Update-Database" desde el Package Manager Console en Visual Studio para crear la base de datos y correr los seeders.
+
 Inicilamente, cuando arranca el programa, este se dirige al index de solicitudes ya que todos los usuarios del 
 sistema, incluyendo los anonimos, pueden visualizar esta informacion y pueden visualizar las soluciones tambien.
 Las demas acciones requieren que el usuario este autenticado.
